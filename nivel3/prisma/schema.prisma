@@ -1,0 +1,21 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Adn {
+  id        Int    @id @default(autoincrement())
+  sequence  String @unique
+  isMutant  Boolean
+  createdAt DateTime @default(now())
+}
+
+
+
+//* PARA SINCRONIZAR LAS TABLAS/MIGRACIONES CREADAS EN PRISMA CON EL LETOR DE BASE DE DATOS (TABLE PLUS O PGADMIN).
+//* TENGO QUE EJCTURAR EL COMANDO: ``` npx prisma migrate dev --name "nombre de la migracion" ```
